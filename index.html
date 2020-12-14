@@ -14,12 +14,13 @@
   </style>
 </head>
 <body>
-
+  <audio src="sound.mp3" loop autoplay id="bgm"></audio>
   <canvas id="mycanvas" width="640" height="360" ></canvas>
   <script>
     window.addEventListener("load",function() {
       alert("play the game and break the speed")
       alert("developer: AMEE SRIVASTAVA")
+      var bgm1= document.getElementById("bgm");
       var GAME_WIDTH = 640;
       var GAME_HEIGHT = 360;
 
@@ -80,6 +81,7 @@
       var sprites = {};
 
       var movePlayer = function() {
+        bgm1.play();
         player.isMoving = true;
       }
 
@@ -94,7 +96,6 @@
       canvas.addEventListener('mouseup', stopPlayer);   
       canvas.addEventListener('touchstart', movePlayer);
       canvas.addEventListener('touchend', stopPlayer);   
-
       var update = function() {
 
         if(checkCollision(player, goal)) {
@@ -174,7 +175,7 @@
       var draw = function() {
         ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);        
 
-        ctx.font = "15px Verdana";
+        ctx.font = "10px Verdana";
         ctx.fillStyle = "rgb(0,0,0)";
         ctx.fillText("Level : " + level , 10, 15);
         ctx.fillText("Life : " + life , 10, 35);
